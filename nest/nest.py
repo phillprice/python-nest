@@ -1739,8 +1739,8 @@ class Nest(object):
         # Opens the data stream
         headers = {'Accept': 'text/event-stream'}
         # Set Connection Timeout to 30 seconds
-        # Set Read Timeout to 5 mintues, Nest Stream API will send
-        #  keep alive event every 30 seconds, 5 mintues is long enough
+        # Set Read Timeout to 5 minutes, Nest Stream API will send
+        #  keep alive event every 30 seconds, 5 minutes is long enough
         #  for us to belive network issue occurred
         response = self._session.get(url, stream=True, headers=headers,
                                      allow_redirects=False,
@@ -1806,7 +1806,7 @@ class Nest(object):
                 if not ready_event.is_set():
                     ready_event.set()
         except requests.exceptions.ConnectionError:
-            _LOGGER.warning("Haven't received data from Nest in 5 mintues")
+            _LOGGER.warning("Haven't received data from Nest in 5 minutes")
         finally:
             _LOGGER.debug("Stopping event loop.")
             queue.clear()
